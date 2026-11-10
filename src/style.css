@@ -1,0 +1,283 @@
+/*
+ * Grundlage der Homepage: Farben, Schrift, Abstände.
+ *
+ * Die Palette kommt aus dem Logo (src/assets/logo/NETDUEL_LOGO.md):
+ * Midnight #0B2545 für Flächen und Text, Signal-Cyan #00B7E0 als einziger
+ * Akzent. Cyan ist auf Weiß zu hell für Text, deshalb gibt es daneben
+ * --cyan-text (dunkler, Kontrast > 4,5 : 1) für Beschriftungen.
+ *
+ * Schriften: IBM Plex für Text, Geist für Wortmarke und Knöpfe. Alle liegen
+ * als npm-Pakete im Projekt und werden mitgebaut. Es wird nichts aus dem
+ * Internet geladen — die Seite läuft auch an einem Stand ohne WLAN.
+ */
+
+:root {
+  /* Midnight, von dunkel nach hell (0 und 1 = Logo-Farben für dunklen Grund
+     und Kachel, 2 = "Midnight hell" aus dem Logo) */
+  --midnight-0: #06192e;
+  --midnight-1: #0b2545;
+  --midnight-2: #123a66;
+  --midnight-3: #1c4c80;
+  --midnight-linie: rgba(150, 185, 225, 0.16);
+  --midnight-text: #eaf0f7;
+  --midnight-leise: #9db1c9;
+
+  /* Akzent */
+  --cyan: #00b7e0;
+  --cyan-hell: #5fd3ee;
+  --cyan-text: #00708c;
+  --cyan-weich: #e0f5fb;
+
+  /* Helle Flächen */
+  --weiss: #ffffff;
+  --papier: #f3f6f9;
+  --linie: #dce3eb;
+  --linie-stark: #c1ccd8;
+  --text: #0b2545;
+  --text-leise: #4f6079;
+
+  /* Status — dieselben Werte wie in der App (WCAG-geprüft) */
+  --gruen: #27783a;
+  --gruen-weich: #e8f4ea;
+  --orange: #8f5c0f;
+  --orange-weich: #fbf1e1;
+  --amber: #f0a43a;
+
+  /* Akzentfarben: je ein kräftiger Ton (Tönungen, Balken) und ein dunkler
+     für Text und Icons auf heller Tönung (Kontrast > 4,5 : 1). Cyan bleibt
+     die Hauptfarbe, die anderen unterscheiden nur Dinge voneinander. */
+  --akzent-cyan: #00b7e0;
+  --akzent-cyan-text: #00708c;
+  --akzent-violett: #8b7cf6;
+  --akzent-violett-text: #5a48d0;
+  --akzent-gruen: #2fbf71;
+  --akzent-gruen-text: #1b7a45;
+  --akzent-amber: #f0a43a;
+  --akzent-amber-text: #985a00;
+  --akzent-koralle: #ff6f61;
+  --akzent-koralle-text: #c0392b;
+
+  --radius-s: 6px;
+  --radius: 10px;
+  --radius-l: 16px;
+
+  /* Abstands-Skala. Alle Abstände auf der Seite kommen aus dieser Liste,
+     damit der Rhythmus überall gleich ist. */
+  --a-1: 4px;
+  --a-2: 8px;
+  --a-3: 12px;
+  --a-4: 16px;
+  --a-5: 24px;
+  --a-6: 32px;
+  --a-7: 48px;
+  --a-8: 64px;
+
+  /* Rhythmus der Seite (wird unten für Tablet und Handy kleiner) */
+  --rand: 32px; /* links und rechts */
+  --abschnitt-y: 112px; /* oben und unten in jedem Abschnitt */
+  --kopf-nach: var(--a-7); /* Überschrift bis Inhalt */
+  --spalten-luecke: var(--a-8); /* zwischen Text- und Bildspalte */
+  --raster-luecke: var(--a-4); /* zwischen Karten */
+
+  /* Verschachtelte Ecken: innerer Radius = äußerer Radius − Abstand.
+     Darum wird der äußere Radius hier aus innen + Abstand berechnet. */
+  --kachel-radius: 10px;
+  --karte-abstand: 20px;
+  --karte-radius: calc(var(--kachel-radius) + var(--karte-abstand));
+  --breite: 1160px;
+
+  --sans:
+    "IBM Plex Sans Variable", "IBM Plex Sans", system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --display: "Geist Variable", var(--sans);
+  --mono:
+    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --kopfhoehe: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--kopfhoehe);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--weiss);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+svg {
+  display: block;
+}
+
+code,
+kbd,
+.mono {
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--cyan);
+  color: var(--midnight-1);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.innen {
+  width: 100%;
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 0 var(--rand);
+}
+
+/* Ein Abschnitt der Seite. Varianten: hell (Standard), papier, dunkel. */
+.abschnitt {
+  padding: var(--abschnitt-y) 0;
+}
+
+.abschnitt.papier {
+  background: var(--papier);
+}
+
+.abschnitt.dunkel {
+  background: var(--midnight-1);
+  color: var(--midnight-text);
+  /* für AbschnittKopf.vue */
+  --kopf-leise: var(--midnight-leise);
+}
+
+/* Inline-Code in Fließtext, z. B. `ping` */
+.befehl {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--papier);
+  border: 1px solid var(--linie);
+  white-space: nowrap;
+}
+
+.dunkel .befehl {
+  background: var(--midnight-2);
+  border-color: var(--midnight-linie);
+  color: var(--cyan-hell);
+}
+
+.nur-vorlesen {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/*
+ * Sanftes Einblenden beim Scrollen (siehe src/einblenden.ts).
+ * Nur Deckkraft und ein kleiner Versatz — nichts, das ablenkt.
+ */
+[data-einblenden] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+[data-einblenden].ein {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  [data-einblenden] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  :root {
+    --rand: 24px;
+    --abschnitt-y: 80px;
+    --kopf-nach: var(--a-6);
+    --spalten-luecke: var(--a-7);
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+  :root {
+    --rand: 20px;
+    --abschnitt-y: 64px;
+    --raster-luecke: var(--a-3);
+  }
+}

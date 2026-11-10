@@ -1,0 +1,26 @@
+{
+  "name": "netduel-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Homepage von NetDuel für den Tag der offenen Tür der HTL Wien West",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource-variable/geist": "^5.3.0",
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@hugeicons/core-free-icons": "^4.4.0",
+    "@hugeicons/vue": "^1.0.8",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.6",
+    "vue-tsc": "^3.1.6"
+  }
+}
