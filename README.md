@@ -1,5 +1,17 @@
 # NetDuel – Homepage
 
+Öffentliche Kopie von [tkafka42/netduel-homepage](https://github.com/tkafka42/netduel-homepage).
+
+Website: **https://htlcoding.github.io/netduel-homepage/**
+
+## GitHub Pages
+
+Jeder Push auf `main` baut die Seite mit `npm ci` und `npm run build` und
+veröffentlicht `dist/` automatisch über GitHub Actions auf GitHub Pages.
+Der Workflow kann unter **Actions → Deploy to GitHub Pages → Run workflow**
+auch manuell gestartet werden. Die relativen Asset-Pfade (`base: './'`)
+unterstützen den Unterordner `/netduel-homepage/`.
+
 Landing Page für NetDuel, die Diplomarbeit an der HTL Wien West (Vue 3 + Vite + TypeScript).
 Eine einzige Seite. Schriften und Bilder sind mitgebaut, es wird nichts aus dem Internet
 geladen — die Seite funktioniert auch am Stand ohne WLAN.
